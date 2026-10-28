@@ -1,0 +1,53 @@
+{
+  "app": {
+    "name": "فريش بوكس",
+    "admin": "لوحة التحكم"
+  },
+  "nav": {
+    "dashboard": "الرئيسية",
+    "products": "المنتجات",
+    "categories": "التصنيفات",
+    "orders": "الطلبات",
+    "settings": "الإعدادات"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "totalProducts": "إجمالي المنتجات",
+    "organicProducts": "منتجات عضوية",
+    "localProducts": "منتجات محلية",
+    "freshToday": "طازج اليوم",
+    "categories": "التصنيفات",
+    "product": "منتج",
+    "products": "منتج"
+  },
+  "products": {
+    "title": "إدارة المنتجات",
+    "add": "إضافة منتج",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "search": "بحث...",
+    "name": "الاسم",
+    "nameEn": "الاسم بالإنجليزية",
+    "price": "السعر",
+    "stock": "المخزون",
+    "origin": "المصدر",
+    "category": "التصنيف",
+    "actions": "إجراءات",
+    "noProducts": "لا توجد منتجات"
+  },
+  "categories": {
+    "title": "إدارة التصنيفات",
+    "add": "إضافة تصنيف",
+    "name": "الاسم",
+    "nameEn": "الاسم بالإنجليزية",
+    "count": "عدد المنتجات"
+  },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "نجح"
+  }
+}

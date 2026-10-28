@@ -1,0 +1,53 @@
+{
+  "app": {
+    "name": "Fresh Box",
+    "admin": "Admin Panel"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "categories": "Categories",
+    "orders": "Orders",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "totalProducts": "Total Products",
+    "organicProducts": "Organic Products",
+    "localProducts": "Local Products",
+    "freshToday": "Fresh Today",
+    "categories": "Categories",
+    "product": "product",
+    "products": "products"
+  },
+  "products": {
+    "title": "Products Management",
+    "add": "Add Product",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search...",
+    "name": "Name",
+    "nameEn": "Name (English)",
+    "price": "Price",
+    "stock": "Stock",
+    "origin": "Origin",
+    "category": "Category",
+    "actions": "Actions",
+    "noProducts": "No products found"
+  },
+  "categories": {
+    "title": "Categories Management",
+    "add": "Add Category",
+    "name": "Name",
+    "nameEn": "Name (English)",
+    "count": "Products Count"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}
