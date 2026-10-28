@@ -57,20 +57,49 @@ export default function AdminOrdersPage() {
   };
 
   const handleAssignDriver = async (orderId: string, driverId: string) => {
-    if (!driverId) return;
-    const { error } = await supabase
-      .from('subscriptions')
-      .update({ driver_id: driverId })
-      .eq('id', orderId);
-    if (error) {
-      alert('Error assigning driver: ' + error.message);
-      return;
-    }
-    setOrders((prev) =>
-      prev.map((o) => (o.id === orderId ? { ...o, driver_id: driverId } : o))
-    );
-  };
+  if (!driverId) return;
 
+  const { error } = await supabase
+    .from('subscriptions')
+    .update({ driver_id: driverId, assigned_at: new Date().toISOString() })
+    .eq('id', orderId);
+
+  if (error) {
+    alert('Error assigning driver: ' + error.message);
+    return;
+  }
+
+  setOrders((prev) =>
+    prev.map((o) => (o.id === orderId ? { ...o, driver_id: driverId } : o))
+  );
+
+  // ✅ Send push notification
+  const { data: driverData } = await supabase
+    .from('drivers')
+    .select('push_token')
+    .eq('id', driverId)
+    .single();
+
+  if (driverData?.push_token) {
+    await fetch('https://exp.host/--/api/v2/push/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: driverData.push_token,
+        sound: 'default',
+        title: '📦 New Order Assigned',
+        body: `You have a delivery order #${orderId.slice(0, 8)}`,
+        data: { orderId },
+        priority: 'high',
+        channelId: 'orders',
+      }),
+    });
+    console.log('✅ Push sent to:', driverData.push_token);
+  } else {
+    console.warn('⚠️ Driver has no push token');
+  }
+};
+  
   if (loading) {
     return (
       <div className="p-8 flex justify-center">
@@ -205,6 +234,16 @@ export default function AdminOrdersPage() {
                   All drivers are currently offline
                 </p>
               )}
+{order.delivery_proof_url && (
+  <div className="mt-4">
+    <p className="text-sm text-gray-600 mb-2">📸 Delivery Proof:</p>
+    <img
+      src={order.delivery_proof_url}
+      alt="Delivery proof"
+      className="w-64 h-40 object-cover rounded-lg border-2 border-green-500"
+    />
+  </div>
+)}
 
               <div className="mt-4 pt-4 border-t flex justify-between items-center">
                 <span className="text-gray-500">Total</span>
