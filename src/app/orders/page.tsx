@@ -150,11 +150,11 @@ export default function AdminOrdersPage() {
                     className="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-700 border border-blue-200 outline-none cursor-pointer"
                   >
                     <option value="">-- Assign Driver --</option>
-                    {availableDrivers.map((d) => (
-                      <option key={d.id} value={d.id}>
-                        {d.name}
-                      </option>
-                    ))}
+                   {drivers.map((d) => (
+  <option key={d.id} value={d.id} disabled={d.is_available === false}>
+    {d.is_available === false ? '🔴' : '🟢'} {d.name}
+  </option>
+))}
                     {availableDrivers.length === 0 && (
                       <option value="" disabled>
                         (No drivers available)
